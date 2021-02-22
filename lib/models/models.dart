@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import '../utils/utils.dart';
+import '../utils/utils.dart';
+
 class Cities {
   List<City> items = new List();
 
@@ -69,4 +72,11 @@ class Values {
 }
 double transformToFahrenheit(double celsius){
     return (1.8*celsius)+32;
+}
+
+String transform(bool scale, double value){
+  if(scale) return format(value) + " °C";
+  else{
+    return format((1.8*value)+32) + " °F";
   }
+}

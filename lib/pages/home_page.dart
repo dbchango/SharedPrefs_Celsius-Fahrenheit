@@ -7,6 +7,8 @@ import 'package:taller_1/utils/preferences.dart';
 import 'package:taller_1/utils/utils.dart';
 import 'package:weather_icons/weather_icons.dart';
 
+import '../models/models.dart';
+import '../models/models.dart';
 import '../services/content_provider.dart';
 import '../services/content_provider.dart';
 
@@ -82,14 +84,15 @@ class _HomePageState extends State<HomePage> {
         shadowColor: Theme.of(context).primaryColorDark,
         child: ListTile(
             leading: Icon(WeatherIcons.thermometer),
-            trailing: Text( prefs.scale == true?  format(city.values.temp) + " °C":format(transformToFahrenheit(city.values.temp)) + " °F"),
+            trailing: Text( transform(prefs.scale, city.values.temp)),
             title: Text(city.name),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("Mínima: " + (prefs.scale == true?  format(city.values.tempMin) + " °C":format(transformToFahrenheit(city.values.tempMin)) + " °F"  )),
-                Text("Máxima: " + (prefs.scale == true?  format(city.values.tempMax) + " °C":format(transformToFahrenheit(city.values.tempMax)) + " °F"  )),
+                Text("Mínima: " + transform(prefs.scale, city.values.tempMin)),
+
+                Text("Máxima: " + transform(prefs.scale, city.values.tempMax)),
               ],
             )),
       ),
